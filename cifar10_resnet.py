@@ -1,13 +1,7 @@
-"""
-Resnet for cifar10
-中间特征size是(B,C,4,4) 还是太小了
-"""
 import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-# from thop import profile
-
 
 class BasicBlock(nn.Module):
     expansion = 1
@@ -117,38 +111,9 @@ def ResNet152():
 
 
 if __name__ == "__main__":
-    # model= ResNet18()
-    # print(model)
-    # input_ = torch.randn(1,3,32,32)
-    #
-    # output_ = model.conv1(input_)[0,1,...].size()
-    # print(output_)
-    #
-    #
-    # # for name,param in model.named_parameters():
-    # #     print(name)
-
-    model = ResNet18()
-
-    # for n,m in model.named_modules():
-    #     if isinstance(m, torch.nn.Conv2d):
-    #         print(n,"             ",m)
-    #         print(m.out_channels)
-
-    all_out = []
-
-    def forward_hook(module,input,output):
-        # print("############")
-        # print(module.out_channels)
-        # print(output.size())
-        all_out.append(output)
-
-    for name,m in model.named_modules():
-        if isinstance(m, torch.nn.Conv2d):
-            m.register_forward_hook(forward_hook)
-
-    o = model(torch.randn(1,3,32,32))
-
-    print(len(all_out))
-    for i in all_out:
-        print(i[0,2,...])
+    model= ResNet18()
+    print(model)
+    input_ = torch.randn(1,3,32,32)
+    output_ = model.conv1(input_)
+    print(output_)
+   
