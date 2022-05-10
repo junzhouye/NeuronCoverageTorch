@@ -8,7 +8,7 @@ import torch
 import numpy
 from collections import defaultdict
 import random
-from Models.cifar10_resnet import ResNet18
+from cifar10_resnet import ResNet18
 import numpy as np
 
 
