@@ -12,7 +12,7 @@ from cifar10_resnet import ResNet18
 import numpy as np
 
 
-class GetAllOutput:
+class NeuronCoverage:
     def __init__(self, model):
         self.model = model
 
@@ -122,7 +122,7 @@ def main():
     model = ResNet18()
     input_ = torch.randn(1,3,32,32)
 
-    aa = GetAllOutput(model)
+    aa = NeuronCoverage(model)
     print(aa.all_layer_name)
     # print(aa.model_layer_dict)
 
